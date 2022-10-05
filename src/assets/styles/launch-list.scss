@@ -1,5 +1,20 @@
 .launch-list {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1.3rem;
+	display: flex;
+	flex-direction: column;
+	padding-top: 1.3rem;
+}
+
+.load-more {
+	text-align: center;
+	margin-top: 2rem;
+	&__button {
+		padding: 1rem 1.6rem;
+		font-size: 1.5rem;
+		font-weight: $bold;
+		border: 0;
+		&--load {
+			background-color: $primary-blue;
+			color: white;
+		}
+	}
 }
