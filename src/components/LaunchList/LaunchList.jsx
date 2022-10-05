@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLaunchContext } from '../../contexts/LaunchContext';
 import Error from '../Error/Error';
 import { LaunchItem } from '../LaunchItem';
 import Loading from '../Loading/Loading';
+import { slice } from 'lodash';
 
 export const LaunchList = ({ items, filter, sort }) => {
 	const { error, loading } = useLaunchContext();
 
-	let filteredItems = [...items];
+	const [index, setIndex] = useState(10);
+	const [isCompleted, setIsCompleted] = useState(false);
+	const initialLaunches = slice(items, 0, index);
+
+	const loadMore = () => {
+		setIndex(index + 10);
+		console.log(index);
+		if (index >= items.length) {
+			setIsCompleted(true);
+		} else {
+			setIsCompleted(false);
+		}
+	};
+
+	let filteredItems = [...initialLaunches];
 
 	if (filter !== '') {
-		filteredItems = filteredItems.filter((item) => item.launch_year === filter);
+		filteredItems = items.filter((item) => item.launch_year === filter);
 	}
 
 	//Bug in the sorting function below
@@ -27,10 +42,33 @@ export const LaunchList = ({ items, filter, sort }) => {
 	return loading ? (
 		<Loading />
 	) : (
-		<ul className="launch-list">
-			{launches.map((item, index) => {
-				return <LaunchItem key={index} item={item} index={index} />;
-			})}
-		</ul>
+		<>
+			<ul className="launch-list">
+				{launches.map((item, index) => {
+					return <LaunchItem key={index} item={item} />;
+				})}
+			</ul>
+
+			<div className="load-more">
+				{isCompleted ? (
+					<button
+						onClick={loadMore}
+						type="button"
+						className="load-more__button load-more__button--completed"
+						disabled
+					>
+						Completed
+					</button>
+				) : (
+					<button
+						onClick={loadMore}
+						type="button"
+						className="load-more__button load-more__button--load"
+					>
+						Load More +
+					</button>
+				)}
+			</div>
+		</>
 	);
 };
