@@ -1,0 +1,28 @@
+.launch {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 20px 32px;
+	box-shadow: 0 2px 5px 0 rgba(black, 25%);
+	border-radius: 10px;
+	transition: $transition;
+	&:not(:last-child) {
+		margin-bottom: 8px;
+	}
+	&:hover {
+		background: rgba($grey, 30%);
+	}
+	&__flight {
+		color: $font-color;
+		font-size: 2.5rem;
+		font-weight: $medium;
+		margin-right: 3rem;
+	}
+	&__mission {
+		font-weight: $medium;
+		font-size: 2rem;
+	}
+	&__data {
+		text-align: right;
+	}
+}
