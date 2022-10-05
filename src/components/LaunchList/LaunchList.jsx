@@ -7,7 +7,6 @@ import { slice } from 'lodash';
 
 export const LaunchList = ({ items, filter, sort }) => {
 	const { error, loading } = useLaunchContext();
-
 	const [index, setIndex] = useState(10);
 	const [isCompleted, setIsCompleted] = useState(false);
 	const initialLaunches = slice(items, 0, index);
@@ -24,8 +23,13 @@ export const LaunchList = ({ items, filter, sort }) => {
 
 	let filteredItems = [...initialLaunches];
 
+	let disabledButton = '';
+
 	if (filter !== '') {
 		filteredItems = items.filter((item) => item.launch_year === filter);
+		disabledButton = 'display-none';
+	} else {
+		disabledButton = '';
 	}
 
 	//Bug in the sorting function below
@@ -63,7 +67,7 @@ export const LaunchList = ({ items, filter, sort }) => {
 					<button
 						onClick={loadMore}
 						type="button"
-						className="button load-more__button--load"
+						className={`button load-more__button--load ${disabledButton}`}
 					>
 						Load More +
 					</button>
