@@ -8,6 +8,10 @@ export const launchContextDefaults = {
 	setSort: Function,
 	filter: '',
 	setFilter: Function,
+	error: '',
+	setError: Function,
+	loading: true,
+	setLoading: Function,
 };
 
 export const LaunchContext = React.createContext(launchContextDefaults);
