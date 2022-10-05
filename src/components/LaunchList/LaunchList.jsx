@@ -54,7 +54,7 @@ export const LaunchList = ({ items, filter, sort }) => {
 					<button
 						onClick={loadMore}
 						type="button"
-						className="load-more__button load-more__button--completed"
+						className="button load-more__button--completed"
 						disabled
 					>
 						Completed
@@ -63,7 +63,7 @@ export const LaunchList = ({ items, filter, sort }) => {
 					<button
 						onClick={loadMore}
 						type="button"
-						className="load-more__button load-more__button--load"
+						className="button load-more__button--load"
 					>
 						Load More +
 					</button>
