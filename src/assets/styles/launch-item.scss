@@ -1,11 +1,13 @@
 .launch {
 	display: flex;
-	justify-content: space-between;
+
 	width: 100%;
 	padding: 20px 32px;
 	box-shadow: 0 2px 5px 0 rgba(black, 25%);
 	border-radius: 10px;
 	transition: $transition;
+	flex-direction: column;
+	justify-content: center;
 	&:not(:last-child) {
 		margin-bottom: 8px;
 	}
@@ -22,7 +24,17 @@
 		font-weight: $medium;
 		font-size: 2rem;
 	}
+
 	&__data {
-		text-align: right;
+		margin-top: 2rem;
+	}
+
+	@media screen and (min-width: $breakpoint-tablet) {
+		flex-direction: row;
+		justify-content: space-between;
+		&__data {
+			text-align: right;
+			margin-top: 0;
+		}
 	}
 }

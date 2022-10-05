@@ -30,6 +30,17 @@
 		display: flex;
 	}
 
+	&__filters {
+		flex-direction: column;
+		.button {
+			width: 100%;
+			&--sort {
+				margin-top: 1rem;
+				margin-left: 0;
+			}
+		}
+	}
+
 	&__main-image {
 		padding-top: 8.1rem;
 		position: sticky;
@@ -39,6 +50,7 @@
 	&__launches {
 		flex: 1;
 		padding-left: 5.9rem;
+		width: 100%;
 	}
 
 	&__filters {
@@ -53,7 +65,7 @@
 	}
 
 	@media (max-width: $breakpoint-desktop) {
-		padding: 3.5rem 2.4rem 2.4rem;
+		padding: 10rem 2.4rem 2.4rem;
 
 		&__main-image {
 			display: none;
@@ -70,6 +82,19 @@
 
 		&__logo-txt {
 			font-size: 1.6rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		&__filters {
+			flex-direction: row;
+			.button {
+				width: auto;
+				&--sort {
+					margin-top: 0;
+					margin-left: 1rem;
+				}
+			}
 		}
 	}
 }
